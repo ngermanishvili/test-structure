@@ -18,8 +18,22 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@myvideo/*": ["./packages/*/src"],
+      "@/*": ["./src/*"],
+      "@myvideo/api": ["./packages/api/src"],
+      "@myvideo/api/*": ["./packages/api/src/*"],
+      "@myvideo/domain": ["./packages/domain/src"],
+      "@myvideo/domain/*": ["./packages/domain/src/*"],
+      "@myvideo/core": ["./packages/core/src"],
+      "@myvideo/core/*": ["./packages/core/src/*"],
+      "@myvideo/presentation": ["./packages/presentation/src"],
+      "@myvideo/presentation/*": ["./packages/presentation/src/*"],
+      "@myvideo/authenticator": ["./packages/authenticator/src"],
+      "@myvideo/authenticator/*": ["./packages/authenticator/src/*"],
+      "@myvideo/analytics": ["./packages/analytics/src"],
+      "@myvideo/analytics/*": ["./packages/analytics/src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
