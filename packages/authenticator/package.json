@@ -5,6 +5,9 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@myvideo/api": "0.1.0"
+    "@myvideo/api": "0.1.0",
+    "zustand": "^5.0.2",
+    "react": "^19.0.0",
+    "next": "15.3.2"
   }
 }

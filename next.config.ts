@@ -7,7 +7,8 @@ const nextConfig = {
     '@myvideo/core',
     '@myvideo/presentation',
     '@myvideo/authenticator',
-    '@myvideo/analytics'
+    '@myvideo/analytics',
+    
   ],
 };
 

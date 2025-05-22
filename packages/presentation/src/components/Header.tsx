@@ -1,19 +1,20 @@
-// packages/presentation/src/components/Header.tsx
 import React from 'react';
 import { Search, User } from 'lucide-react';
 
 export type HeaderProps = {
     logo?: string;
-    navigationItems?: Array<{ label: string; href?: string; active?: boolean }>;
+    navigationItems?: Array<{ label: React.ReactNode; href?: string; active?: boolean }>;
     onSearch?: (query: string) => void;
     onUserClick?: () => void;
+    userSection?: React.ReactNode;
 };
 
 export default function Header({
     logo = "LOOOGO",
     navigationItems = [],
     onSearch,
-    onUserClick
+    onUserClick,
+    userSection
 }: HeaderProps) {
     return (
         <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200">
@@ -35,7 +36,7 @@ export default function Header({
                     </ul>
                 </nav>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-4">
                 <div className="relative">
                     <input
                         className="w-64 rounded-full bg-gray-100 pl-4 pr-10 py-1 text-sm outline-none"
@@ -44,12 +45,16 @@ export default function Header({
                     />
                     <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
                 </div>
-                <div
-                    className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer"
-                    onClick={onUserClick}
-                >
-                    <User className="h-4 w-4 text-gray-700" />
-                </div>
+                
+                {/* Custom user section or default user icon */}
+                {userSection || (
+                    <div
+                        className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer"
+                        onClick={onUserClick}
+                    >
+                        <User className="h-4 w-4 text-gray-700" />
+                    </div>
+                )}
             </div>
         </header>
     );

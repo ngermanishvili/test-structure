@@ -30,10 +30,12 @@
       "@myvideo/core/*": ["./packages/core/src/*"],
       "@myvideo/presentation": ["./packages/presentation/src"],
       "@myvideo/presentation/*": ["./packages/presentation/src/*"],
-      "@myvideo/authenticator": ["./packages/authenticator/src"],
       "@myvideo/authenticator/*": ["./packages/authenticator/src/*"],
       "@myvideo/analytics": ["./packages/analytics/src"],
-      "@myvideo/analytics/*": ["./packages/analytics/src/*"]
+      "@myvideo/analytics/*": ["./packages/analytics/src/*"],
+      "@myvideo/authenticator/server": ["./packages/authenticator/src/server"],
+      "@myvideo/authenticator/client": ["./packages/authenticator/src/client"],
+      "@myvideo/authenticator": ["./packages/authenticator/src"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

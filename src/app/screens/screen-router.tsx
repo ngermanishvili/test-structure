@@ -1,12 +1,9 @@
 import { ViewModel } from "@myvideo/domain";
 import HomeDashboard from "./home-dashboard";
-import SportDashboard from "./sport-dashboard";
+import VideosScreen from "./videos-screen";
 import NotFoundScreen from "./not-found";
-
 import { Suspense } from 'react';
-
-
-import type { HomeViewModel, SportViewModel, VideoViewModel } from '@myvideo/domain/src/types';
+import type { HomeViewModel, VideosViewModel } from '@myvideo/domain/src/types'; // ✅ Add VideosViewModel
 
 export default function ScreenRouter({ viewModel }: { viewModel: ViewModel }) {
     return (
@@ -15,8 +12,8 @@ export default function ScreenRouter({ viewModel }: { viewModel: ViewModel }) {
                 switch (viewModel.type) {
                     case "home":
                         return <HomeDashboard data={viewModel as HomeViewModel} />;
-                    case "sport":
-                        return <SportDashboard data={viewModel as SportViewModel} />;
+                    case "videos":
+                        return <VideosScreen data={viewModel as VideosViewModel} />;
                     default:
                         return <NotFoundScreen />;
                 }

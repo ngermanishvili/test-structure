@@ -6,12 +6,14 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --hostname local-tv.myvideo.ge --port 8888",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.76.1",
+    "@tanstack/react-query-devtools": "^5.76.1",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "react": "^19.0.0",

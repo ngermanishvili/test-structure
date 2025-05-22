@@ -1,120 +1,93 @@
+export type Channel = {
+    id: string;
+    name: string;
+    logo?: {
+        url?: string;
+    };
+    views?: string;
+    duration?: string;
+    subscribers?: string;
+    active?: boolean;
+};
+
+export type Video = {
+    id: string;
+    title: string;
+    thumbnail: string;
+    duration?: string;
+    views?: string;
+    publishedAt?: string;
+    isLive?: boolean;
+};
+
+export type UserChannel = {
+    id: string;
+    name: string;
+    cover?: string;
+    subscribers: number;
+    videos: number;
+    views: number;
+    url: string;
+    description?: string;
+};
+
+// ✅ NAVIGATION TYPE
+export type NavItem = {
+    label: string;
+    href?: string;
+    active?: boolean;
+};
+
+export type DashboardSectionType = 'tvChannels' | 'featuredVideos' | 'popularUserChannels';
+
+export type DashboardSection = {
+    id: string;
+    type: 'DashboardSection';
+    attributes: {
+        data_template: DashboardSectionType;
+        data_type: 'tv_channel' | 'video' | 'user_channel';
+        title: string;
+        items_to_display?: number;
+    };
+    relationships?: {
+        items?: {
+            data: any[];
+        };
+    };
+};
+
+export type HeroSection = {
+    channelInfo: Channel;
+    liveInfo: {
+        time: string;
+        date: string;
+        isLive: boolean;
+    };
+    description: string;
+    backgroundImage?: string;
+};
+
 
 export type HomeViewModel = {
     type: 'home';
-    navigation: Array<{ label: string; href?: string; active?: boolean }>;
-    heroSection: {
-        channelInfo: {
-            id: string;
-            name: string;
-            logo?: string;
-            active?: boolean;
-            views?: string;
-            duration?: string;
-            subscribers?: string;
-        };
-        liveInfo: {
-            time: string;
-            date: string;
-            isLive: boolean;
-        };
-        description: string;
-        backgroundImage?: string;
-    };
-    channels: Array<{
-        id: string;
-        name: string;
-        logo?: string;
-        active?: boolean;
-        views?: string;
-        duration?: string;
-        subscribers?: string;
-    }>;
-    newBroadcasts: Array<{
-        id: string;
-        title: string;
-        thumbnail: string;
-        isLive?: boolean;
-    }>;
-    channelVideos: {
-        channelName: string;
-        videos: Array<{
-            id: string;
-            title: string;
-            thumbnail: string;
-            duration?: string;
-            views?: string;
-            publishedAt?: string;
-        }>;
-    };
+    navigation: NavItem[];
+    heroSection: HeroSection;
+    channels: Channel[];           // tvChannels section
+    featuredVideos: Video[];       // featuredVideos section
 };
 
-export type VideoViewModel = {
-    type: 'video';
-    id: string;
-    title: string;
-    description: string;
-    videoUrl: string;
-    thumbnailUrl: string;
-    duration: number;
-    views: number;
-    likes: number;
-    publishedAt: string;
-    channel: {
-        id: string;
-        name: string;
-        avatarUrl: string;
-    };
-    relatedVideos: Array<{
-        id: string;
-        title: string;
-        thumbnailUrl: string;
-        duration: number;
-        views: number;
-        publishedAt: string;
-        channelName: string;
-    }>;
+export type VideosViewModel = {
+    type: 'videos';
+    navigation: NavItem[];
+    channels: Channel[];
+    featuredVideos: Video[];
+    popularUserChannels: UserChannel[];
 };
 
-export type SportViewModel = {
-    type: 'sport';
-    navigation: Array<{ label: string; href?: string; active?: boolean }>;
-    heroSection: {
-        title: string;
-        subtitle: string;
-        backgroundImage?: string;
-        backgroundColor?: string;
-    };
-    channels: Array<{
-        id: string;
-        name: string;
-        logo?: string;
-        active?: boolean;
-    }>;
-    newBroadcasts: Array<{
-        id: string;
-        title: string;
-        thumbnail: string;
-        duration?: string;
-        views?: string;
-        publishedAt?: string;
-        isLive?: boolean;
-    }>;
-    channelVideos: {
-        channelName: string;
-        videos: Array<{
-            id: string;
-            title: string;
-            thumbnail: string;
-            duration?: string;
-            views?: string;
-            publishedAt?: string;
-            isLive?: boolean;
-        }>;
-    };
-};
-
+// ✅ NOT FOUND (fallback)
 export type NotFoundViewModel = {
     type: 'not_found';
 };
 
-export type ViewModel = HomeViewModel | VideoViewModel | SportViewModel | NotFoundViewModel;
+// ✅ MAIN VIEW MODEL (3 type ახლა)
+export type ViewModel = HomeViewModel | VideosViewModel | NotFoundViewModel;

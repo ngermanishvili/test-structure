@@ -1,37 +1,20 @@
 'use client';
 import React from 'react';
-import type { HomeViewModel } from '@myvideo/domain/src/types';
+import type { HomeViewModel, Channel, Video } from '@myvideo/domain';
 import {
     HeroSection,
     ChannelGrid,
     VideoGrid,
-    type Channel,
-    type VideoItem
 } from '@myvideo/presentation';
 
 export default function HomeDashboard({ data }: { data: HomeViewModel }) {
+
     const handleChannelClick = (channel: Channel) => {
         console.log('Channel clicked:', channel);
     };
 
-    const handleVideoClick = (video: VideoItem) => {
+    const handleVideoClick = (video: Video) => {
         console.log('Video clicked:', video);
-    };
-
-    const handleSubscribe = () => {
-        console.log('Subscribe clicked');
-    };
-
-    const handleLike = () => {
-        console.log('Like clicked');
-    };
-
-    const handleDislike = () => {
-        console.log('Dislike clicked');
-    };
-
-    const handleVolumeToggle = () => {
-        console.log('Volume toggled');
     };
 
     return (
@@ -41,29 +24,23 @@ export default function HomeDashboard({ data }: { data: HomeViewModel }) {
                 liveInfo={data.heroSection.liveInfo}
                 description={data.heroSection.description}
                 backgroundImage={data.heroSection.backgroundImage}
-                onSubscribe={handleSubscribe}
-                onLike={handleLike}
-                onDislike={handleDislike}
-                onVolumeToggle={handleVolumeToggle}
+                onSubscribe={() => console.log('Subscribe clicked')}
+                onLike={() => console.log('Like clicked')}
+                onDislike={() => console.log('Dislike clicked')}
+                onVolumeToggle={() => console.log('Volume toggled')}
             />
-
             <ChannelGrid
                 channels={data.channels}
                 onChannelClick={handleChannelClick}
+                maxChannels={8}
             />
-
-            <VideoGrid
-                title="ახალი ეფირები"
-                videos={data.newBroadcasts}
-                onVideoClick={handleVideoClick}
-            />
-
-            <VideoGrid
-                title={data.channelVideos.channelName}
-                videos={data.channelVideos.videos}
-                onVideoClick={handleVideoClick}
-                showChannelIcon={true}
-            />
+            {data.featuredVideos.length > 0 && (
+                <VideoGrid
+                    title="რჩეული ვიდეოები"
+                    videos={data.featuredVideos}
+                    onVideoClick={handleVideoClick}
+                />
+            )}
         </div>
     );
 }
