@@ -8,7 +8,7 @@ export default function DashboardTestPage() {
       <AuthGuard
         fallback={
           <div className="max-w-md mx-auto">
-            <h1 className="text-2xl font-bold mb-6">Dashboard Test - ავტორიზაცია საჭიროა</h1>
+            <h1 className="text-2xl font-bold mb-6">Dashboard Test - ავტორიზაცია </h1>
             <LoginForm />
           </div>
         }
@@ -60,7 +60,7 @@ function DashboardTest() {
       setDashboardData(response as Record<string, unknown>);
 
     } catch (err) {
-      // ✅ Fix any type
+
       const errorMessage = err instanceof Error ? err.message : 'Unknown error';
       console.error('❌ Dashboard failed:', errorMessage);
       setError(errorMessage);

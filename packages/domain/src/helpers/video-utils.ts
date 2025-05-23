@@ -10,10 +10,6 @@ export function generateThumbnailUrl(videoId: string, thumb: string): string {
     return `${baseUrl}${filename}`;
 }
 
-export function generateVideoUrl(videoId: string, temporary?: string): string {
-    if (!videoId) return '';
-    return `https://stream.myvideo.ge/video/${videoId}`;
-}
 
 export function formatVideoDuration(duration: number): string {
     if (!duration || duration <= 0) return '0:00';

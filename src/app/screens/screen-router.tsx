@@ -3,7 +3,7 @@ import HomeDashboard from "./home-dashboard";
 import VideosScreen from "./videos-screen";
 import NotFoundScreen from "./not-found";
 import { Suspense } from 'react';
-import type { HomeViewModel, VideosViewModel } from '@myvideo/domain/src/types'; // ✅ Add VideosViewModel
+import type { HomeViewModel, VideosViewModel } from '@myvideo/domain/src/types'; 
 
 export default function ScreenRouter({ viewModel }: { viewModel: ViewModel }) {
     return (

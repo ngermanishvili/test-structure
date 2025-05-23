@@ -7,7 +7,7 @@ import {
     UserChannel,
 } from './types';
 
-export function resolveViewModel(data: any): ViewModel {
+export function resolveViewModel(data: Record<string, any>  ): ViewModel {
     if (!data) {
         return { type: 'not_found' };
     }
